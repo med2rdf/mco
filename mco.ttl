@@ -1,0 +1,620 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix obo:   <http://purl.obolibrary.org/obo/> .
+@prefix faldo: <http://biohackathon.org/resource/faldo#> .
+@prefix mco:   <http://identifiers.org/mco/> .
+
+# Base classes and properties
+
+<http://identifiers.org/mco/>
+	rdf:type	owl:Ontology ;
+	dct:license	<http://creativecommons.org/publicdomain/zero/1.0/> ;
+	rdfs:seeAlso	<https://github.com/med2rdf/mco/> ;
+	rdfs:seeAlso	<http://biohackathon.org/resource/mco/> ;
+	owl:versionInfo "2024-09-13"^^xsd:date .
+
+mco:MouseChromosome
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome" ;
+	skos:definition	"Collection of mouse chromosomes" ;
+	rdfs:seeAlso	<http://identifiers.org/taxonomy/10090> ;
+	skos:broader	obo:SO_0000340 .    # chromosome
+
+mco:GenomeBuild
+	rdf:type	owl:Class ;
+	rdfs:label	"Genome build" ;
+	skos:definition	"Version of a genome assembly" ;
+	skos:broader	obo:SO_0001505 .    # reference_genome
+
+mco:build
+	rdf:type	owl:ObjectProperty ;
+	rdfs:label	"build" ;
+	rdfs:domain	mco:MouseChromosome ;
+	rdfs:range	mco:GenomeBuild .
+
+mco:insdc
+	rdf:type	owl:ObjectProperty ;
+	rdfs:label	"INSDC" ;
+	rdfs:domain	mco:MouseChromosome ;
+	rdfs:range	rdfs:Resource .
+
+mco:refseq
+	rdf:type	owl:ObjectProperty ;
+	rdfs:label	"RefSeq" ;
+	rdfs:domain	mco:MouseChromosome ;
+	rdfs:range	rdfs:Resource .
+
+mco:ucsc
+	rdf:type	owl:ObjectProperty ;
+	rdfs:label	"UCSC" ;
+	rdfs:domain	mco:MouseChromosome ;
+	rdfs:range	rdfs:Resource .
+
+mco:ensembl
+	rdf:type	owl:ObjectProperty ;
+	rdfs:label	"Ensembl" ;
+	rdfs:domain	mco:MouseChromosome ;
+	rdfs:range	rdfs:Resource .
+
+mco:length
+	rdf:type	owl:DatatypeProperty ;
+	rdfs:label	"length" ;
+	rdfs:domain	mco:GenomeBuild ;
+	rdfs:range	xsd:integer .
+
+mco:bandtype
+	rdf:type	owl:DatatypeProperty ;
+	rdfs:label	"cytoband type" ;
+	rdfs:domain	mco:Cytoband ;
+	rdfs:range	mco:CytobandType .
+
+# Human genome build classes and instances
+
+mco:GRCm39
+	rdf:type	owl:Class ;
+	rdfs:label	"GRCm39" ;
+	skos:definition	"Genome Reference Consortium Mouse Build 39" ;
+	skos:altLabel	"mm39" ;
+	rdfs:subClassOf	mco:GenomeBuild .
+
+mco:GRCm38
+	rdf:type	owl:Class ;
+	rdfs:label	"GRCm38" ;
+	skos:definition	"Genome Reference Consortium Mouse Build 38" ;
+	skos:altLabel	"mm10" ;
+	rdfs:subClassOf	mco:GenomeBuild .
+
+# Mouse chromosome classes and instances
+
+mco:1
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:1\/GRCm39
+	rdf:type	mco:1 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	195154279 ;
+	mco:insdc	<http://identifiers.org/insdc/CM000994.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000067.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr1> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/1> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=1> .
+
+mco:1\/GRCm38
+	rdf:type	mco:1 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	195471971 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/1> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=1> .
+mco:2
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:2\/GRCm39
+	rdf:type	mco:2 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	181755017 ;
+	mco:insdc	<http://identifiers.org/insdc/CM000995.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000068.8> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr2> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/2> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=2> .
+
+mco:2\/GRCm38
+	rdf:type	mco:2 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	182113224 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/2> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=2> .
+mco:3
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:3\/GRCm39
+	rdf:type	mco:3 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	159745316 ;
+	mco:insdc	<http://identifiers.org/insdc/CM000996.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000069.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr3> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/3> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=3> .
+
+mco:3\/GRCm38
+	rdf:type	mco:3 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	160039680 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/3> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=3> .
+mco:4
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:4\/GRCm39
+	rdf:type	mco:4 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	156860686 ;
+	mco:insdc	<http://identifiers.org/insdc/CM000997.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000070.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr4> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/4> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=4> .
+
+mco:4\/GRCm38
+	rdf:type	mco:4 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	156508116 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/4> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=4> .
+mco:5
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:5\/GRCm39
+	rdf:type	mco:5 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	151758149 ;
+	mco:insdc	<http://identifiers.org/insdc/CM000998.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000071.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr5> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/5> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=5> .
+
+mco:5\/GRCm38
+	rdf:type	mco:5 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	151834684 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/5> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=5> .
+mco:6
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:6\/GRCm39
+	rdf:type	mco:6 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	149588044 ;
+	mco:insdc	<http://identifiers.org/insdc/CM000999.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000072.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr6> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/6> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=6> .
+
+mco:6\/GRCm38
+	rdf:type	mco:6 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	149736546 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/6> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=6> .
+mco:7
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:7\/GRCm39
+	rdf:type	mco:7 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	144995196 ;
+	mco:insdc	<http://identifiers.org/insdc/CM001000.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000073.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr7> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/7> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=7> .
+
+mco:7\/GRCm38
+	rdf:type	mco:7 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	145441459 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/7> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=7> .
+mco:8
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:8\/GRCm39
+	rdf:type	mco:8 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	130127694 ;
+	mco:insdc	<http://identifiers.org/insdc/CM001001.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000074.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr8> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/8> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=8> .
+
+mco:8\/GRCm38
+	rdf:type	mco:8 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	129401213 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/8> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=8> .
+mco:9
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:9\/GRCm39
+	rdf:type	mco:9 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	124359700 ;
+	mco:insdc	<http://identifiers.org/insdc/CM001002.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000075.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr9> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/9> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=9> .
+
+mco:9\/GRCm38
+	rdf:type	mco:9 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	124595110 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/9> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=9> .
+mco:10
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:10\/GRCm39
+	rdf:type	mco:10 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	130530862 ;
+	mco:insdc	<http://identifiers.org/insdc/CM001003.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000076.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr10> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/10> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=10> .
+
+mco:10\/GRCm38
+	rdf:type	mco:10 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	130694993 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/10> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=10> .
+mco:11
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:11\/GRCm39
+	rdf:type	mco:11 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	121973369 ;
+	mco:insdc	<http://identifiers.org/insdc/CM001004.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000077.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr11> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/11> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=11> .
+
+mco:11\/GRCm38
+	rdf:type	mco:11 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	122082543 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/11> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=11> .
+mco:12
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:12\/GRCm39
+	rdf:type	mco:12 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	120092757 ;
+	mco:insdc	<http://identifiers.org/insdc/CM001005.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000078.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr12> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/12> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=12> .
+
+mco:12\/GRCm38
+	rdf:type	mco:12 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	120129022 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/12> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=12> .
+mco:13
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:13\/GRCm39
+	rdf:type	mco:13 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	120883175 ;
+	mco:insdc	<http://identifiers.org/insdc/CM001006.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000079.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr13> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/13> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=13> .
+
+mco:13\/GRCm38
+	rdf:type	mco:13 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	120421639 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/13> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=13> .
+mco:14
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:14\/GRCm39
+	rdf:type	mco:14 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	125139656 ;
+	mco:insdc	<http://identifiers.org/insdc/CM001007.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000080.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr14> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/14> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=14> .
+
+mco:14\/GRCm38
+	rdf:type	mco:14 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	124902244 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/14> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=14> .
+mco:15
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:15\/GRCm39
+	rdf:type	mco:15 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	104073951 ;
+	mco:insdc	<http://identifiers.org/insdc/CM001008.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000081.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr15> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/15> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=15> .
+
+mco:15\/GRCm38
+	rdf:type	mco:15 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	104043685 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/15> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=15> .
+mco:16
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:16\/GRCm39
+	rdf:type	mco:16 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	98008968 ;
+	mco:insdc	<http://identifiers.org/insdc/CM001009.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000082.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr16> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/16> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=16> .
+
+mco:16\/GRCm38
+	rdf:type	mco:16 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	98207768 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/16> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=16> .
+mco:17
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:17\/GRCm39
+	rdf:type	mco:17 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	95294699 ;
+	mco:insdc	<http://identifiers.org/insdc/CM001010.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000083.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr17> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/17> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=17> .
+
+mco:17\/GRCm38
+	rdf:type	mco:17 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	94987271 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/17> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=17> .
+mco:18
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:18\/GRCm39
+	rdf:type	mco:18 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	90720763 ;
+	mco:insdc	<http://identifiers.org/insdc/CM001011.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000084.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr18> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/18> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=18> .
+
+mco:18\/GRCm38
+	rdf:type	mco:18 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	90702639 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/18> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=18> .
+mco:19
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:19\/GRCm39
+	rdf:type	mco:19 ;
+	mco:build	mco:GRCm39 ;
+	mco:length	61420004 ;
+	mco:insdc	<http://identifiers.org/insdc/CM001012.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000085.7> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chr19> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/19> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=19> .
+
+mco:19\/GRCm38
+	rdf:type	mco:19 ;
+	mco:build	mco:GRCm38 ;
+	mco:length	61431566 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/19> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=19> .
+mco:X
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:X\/GRCm39
+	rdf:type	mco:X ;
+	mco:build	mco:GRCm39 ;
+	mco:length	169476592 ;
+	mco:insdc	<http://identifiers.org/insdc/CM001013.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000086.8> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chrX> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/X> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=X> .
+
+mco:X\/GRCm38
+	rdf:type	mco:X ;
+	mco:build	mco:GRCm38 ;
+	mco:length	171031299 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/X> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=X> .
+mco:Y
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:Y\/GRCm39
+	rdf:type	mco:Y ;
+	mco:build	mco:GRCm39 ;
+	mco:length	91455967 ;
+	mco:insdc	<http://identifiers.org/insdc/CM001014.3> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_000087.8> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chrY> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/Y> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=Y> .
+
+mco:Y\/GRCm38
+	rdf:type	mco:Y ;
+	mco:build	mco:GRCm38 ;
+	mco:length	91744698 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/Y> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=Y> .
+mco:MT
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome 1" ;
+	rdfs:subClassOf	mco:MouseChromosome .
+
+mco:MT\/GRCm39
+	rdf:type	mco:MT ;
+	mco:build	mco:GRCm39 ;
+	mco:length	16299 ;
+	mco:insdc	<http://identifiers.org/insdc/AY172335.1> ;
+	mco:refseq	<http://identifiers.org/refseq/NC_005089.1> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=chrM> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm39/MT> ,
+		<http://ensembl.org/Mus_musculus/Location/Chromosome?r=MT> .
+
+mco:MT\/GRCm38
+	rdf:type	mco:MT ;
+	mco:build	mco:GRCm38 ;
+	mco:length	16299 ;
+	mco:insdc	<http://identifiers.org/insdc/> ;
+	mco:refseq	<http://identifiers.org/refseq/> ;
+	mco:ucsc	<http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&position=> ;
+	mco:ensembl	<http://rdf.ebi.ac.uk/resource/ensembl/mus_musculus/GRCm38/MT> ,
+		<http://nov2020.archive.ensembl.org/Mus_musculus/Location/Chromosome?r=MT> .
