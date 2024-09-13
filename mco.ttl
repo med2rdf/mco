@@ -24,17 +24,17 @@ mco:MouseChromosome
 	rdfs:seeAlso	<http://identifiers.org/taxonomy/10090> ;
 	skos:broader	obo:SO_0000340 .    # chromosome
 
-mco:GenomeBuild
+mco:MouseGenomeBuild
 	rdf:type	owl:Class ;
-	rdfs:label	"Genome build" ;
-	skos:definition	"Version of a genome assembly" ;
+	rdfs:label	"Mouse genome build" ;
+	skos:definition	"Version of a mouse genome assembly" ;
 	skos:broader	obo:SO_0001505 .    # reference_genome
 
 mco:build
 	rdf:type	owl:ObjectProperty ;
 	rdfs:label	"build" ;
 	rdfs:domain	mco:MouseChromosome ;
-	rdfs:range	mco:GenomeBuild .
+	rdfs:range	mco:MouseGenomeBuild .
 
 mco:insdc
 	rdf:type	owl:ObjectProperty ;
@@ -63,14 +63,8 @@ mco:ensembl
 mco:length
 	rdf:type	owl:DatatypeProperty ;
 	rdfs:label	"length" ;
-	rdfs:domain	mco:GenomeBuild ;
+	rdfs:domain	mco:MouseGenomeBuild ;
 	rdfs:range	xsd:integer .
-
-mco:bandtype
-	rdf:type	owl:DatatypeProperty ;
-	rdfs:label	"cytoband type" ;
-	rdfs:domain	mco:Cytoband ;
-	rdfs:range	mco:CytobandType .
 
 # Mouse genome build classes and instances
 
@@ -79,14 +73,14 @@ mco:GRCm39
 	rdfs:label	"GRCm39" ;
 	skos:definition	"Genome Reference Consortium Mouse Build 39" ;
 	skos:altLabel	"mm39" ;
-	rdfs:subClassOf	mco:GenomeBuild .
+	rdfs:subClassOf	mco:MouseGenomeBuild .
 
 mco:GRCm38
 	rdf:type	owl:Class ;
 	rdfs:label	"GRCm38" ;
 	skos:definition	"Genome Reference Consortium Mouse Build 38" ;
 	skos:altLabel	"mm10" ;
-	rdfs:subClassOf	mco:GenomeBuild .
+	rdfs:subClassOf	mco:MouseGenomeBuild .
 
 # Mouse chromosome classes and instances
 
