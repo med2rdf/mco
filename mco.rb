@@ -40,7 +40,7 @@ parse_chrom("mm10.chromAlias.txt", "mm10.chrom.sizes", mm10)
   puts "\trdfs:subClassOf\tmco:MouseChromosome ."
   puts
 
-  puts "mco:#{num}\\/GRCm39"
+  puts "<http://identifiers.org/mco/#{num}/GRCm39>"
   puts "\trdf:type\tmco:#{num} ;"
   puts "\tmco:build\tmco:GRCm39 ;"
   puts "\tmco:length\t#{mm39[num][:length]} ;"
@@ -51,7 +51,7 @@ parse_chrom("mm10.chromAlias.txt", "mm10.chrom.sizes", mm10)
   puts "\t\t<http://ensembl.org/Mus_musculus/Location/Chromosome?r=#{num}> ."
   puts
 
-  puts "mco:#{num}\\/GRCm38"
+  puts "<http://identifiers.org/mco/#{num}/GRCm38>"
   puts "\trdf:type\tmco:#{num} ;"
   puts "\tmco:build\tmco:GRCm38 ;"
   puts "\tmco:length\t#{mm10[num][:length]} ;"

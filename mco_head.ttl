@@ -1,0 +1,92 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix obo:   <http://purl.obolibrary.org/obo/> .
+@prefix faldo: <http://biohackathon.org/resource/faldo#> .
+@prefix mco:   <http://identifiers.org/mco/> .
+
+# Base classes and properties
+
+<http://identifiers.org/mco/>
+	rdf:type	owl:Ontology ;
+	dct:license	<http://creativecommons.org/publicdomain/zero/1.0/> ;
+	rdfs:seeAlso	<https://github.com/med2rdf/mco/> ;
+	rdfs:seeAlso	<http://biohackathon.org/resource/mco/> ;
+	owl:versionInfo "2024-09-13"^^xsd:date .
+
+mco:MouseChromosome
+	rdf:type	owl:Class ;
+	rdfs:label	"Mouse chromosome" ;
+	skos:definition	"Collection of mouse chromosomes" ;
+	rdfs:seeAlso	<http://identifiers.org/taxonomy/10090> ;
+	skos:broader	obo:SO_0000340 .    # chromosome
+
+mco:GenomeBuild
+	rdf:type	owl:Class ;
+	rdfs:label	"Genome build" ;
+	skos:definition	"Version of a genome assembly" ;
+	skos:broader	obo:SO_0001505 .    # reference_genome
+
+mco:build
+	rdf:type	owl:ObjectProperty ;
+	rdfs:label	"build" ;
+	rdfs:domain	mco:MouseChromosome ;
+	rdfs:range	mco:GenomeBuild .
+
+mco:insdc
+	rdf:type	owl:ObjectProperty ;
+	rdfs:label	"INSDC" ;
+	rdfs:domain	mco:MouseChromosome ;
+	rdfs:range	rdfs:Resource .
+
+mco:refseq
+	rdf:type	owl:ObjectProperty ;
+	rdfs:label	"RefSeq" ;
+	rdfs:domain	mco:MouseChromosome ;
+	rdfs:range	rdfs:Resource .
+
+mco:ucsc
+	rdf:type	owl:ObjectProperty ;
+	rdfs:label	"UCSC" ;
+	rdfs:domain	mco:MouseChromosome ;
+	rdfs:range	rdfs:Resource .
+
+mco:ensembl
+	rdf:type	owl:ObjectProperty ;
+	rdfs:label	"Ensembl" ;
+	rdfs:domain	mco:MouseChromosome ;
+	rdfs:range	rdfs:Resource .
+
+mco:length
+	rdf:type	owl:DatatypeProperty ;
+	rdfs:label	"length" ;
+	rdfs:domain	mco:GenomeBuild ;
+	rdfs:range	xsd:integer .
+
+mco:bandtype
+	rdf:type	owl:DatatypeProperty ;
+	rdfs:label	"cytoband type" ;
+	rdfs:domain	mco:Cytoband ;
+	rdfs:range	mco:CytobandType .
+
+# Mouse genome build classes and instances
+
+mco:GRCm39
+	rdf:type	owl:Class ;
+	rdfs:label	"GRCm39" ;
+	skos:definition	"Genome Reference Consortium Mouse Build 39" ;
+	skos:altLabel	"mm39" ;
+	rdfs:subClassOf	mco:GenomeBuild .
+
+mco:GRCm38
+	rdf:type	owl:Class ;
+	rdfs:label	"GRCm38" ;
+	skos:definition	"Genome Reference Consortium Mouse Build 38" ;
+	skos:altLabel	"mm10" ;
+	rdfs:subClassOf	mco:GenomeBuild .
+
+# Mouse chromosome classes and instances
+
